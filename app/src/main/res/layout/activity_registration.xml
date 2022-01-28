@@ -13,9 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="264dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="Username (cannot change later)"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

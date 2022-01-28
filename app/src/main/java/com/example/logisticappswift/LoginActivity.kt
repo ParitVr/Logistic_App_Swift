@@ -3,10 +3,15 @@ package com.example.logisticappswift
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,15 +37,36 @@ class LoginActivity : AppCompatActivity() {
         //
         //on click functions
         login_btn.setOnClickListener {
-
+            if(email_login_txt.text.toString() == "" || password_login_txt.text.toString() == ""){
+                Toast.makeText(this, "Invalid login", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             FirebaseAuth.getInstance().signInWithEmailAndPassword(
                 email_login_txt.text.toString(),
                 password_login_txt.text.toString()
+
             )
                 .addOnCompleteListener(this) { task ->
 
                     if (task.isSuccessful) {
                         val intent = Intent(this, HomeActivity::class.java)
+
+                        val ref = FirebaseDatabase.getInstance().getReference()
+                        val query = ref.child("users/client/").orderByChild("email").equalTo(email_login_txt.text.toString())
+                            .addValueEventListener(object : ValueEventListener{
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    Log.d("console", snapshot.key.toString())
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+                                    TODO("Not yet implemented")
+                                }
+
+                            })
+                        //val value = query.get().result
+                        //val result = value.toString()
+                        //Log.d("console", "$result")
+                        //Log.d("console", "hello")
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, "Invalid Login", Toast.LENGTH_SHORT).show()

@@ -47,6 +47,20 @@ class RegistrationActivity : AppCompatActivity() {
                 Toast.makeText(this,"Password must be 7 characters or more", Toast.LENGTH_SHORT).show();
                 return@setOnClickListener;
             }
+            val check_username_driver = FirebaseDatabase.getInstance().getReference("users/driver")
+            check_username_driver.child(username_txt.text.toString()).get().addOnSuccessListener {
+                if(it.exists()){
+                    Toast.makeText(this, "Username already exist", Toast.LENGTH_SHORT).show()
+                    return@addOnSuccessListener
+                }
+            }
+            val check_username_client = FirebaseDatabase.getInstance().getReference("users/user/${username_txt.text.toString()}")
+            check_username_client.child(username_txt.text.toString()).get().addOnSuccessListener {
+                if(it.exists()){
+                    Toast.makeText(this, "Username already exist", Toast.LENGTH_SHORT).show()
+                    return@addOnSuccessListener
+                }
+            }
             Log.d("console", "Email is ${email_txt.text}")
             Log.d("console", "password is ${password_txt.text}")
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_txt.text.toString(), password_txt.text.toString())
@@ -115,7 +129,7 @@ class RegistrationActivity : AppCompatActivity() {
         val email_txt = findViewById<TextView>(R.id.email_txt);
 
         val uid = FirebaseAuth.getInstance().uid ?: ""
-        val ref = FirebaseDatabase.getInstance().getReference("users/$status/$uid")
+        val ref = FirebaseDatabase.getInstance().getReference("users/$status/${username_txt.text.toString()}")
 
         val user =  User(uid, username_txt.text.toString(), profile_img_url, status, email_txt.text.toString())
         ref.setValue(user)
