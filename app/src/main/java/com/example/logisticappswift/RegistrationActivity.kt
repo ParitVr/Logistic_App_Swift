@@ -99,7 +99,7 @@ class RegistrationActivity : AppCompatActivity() {
         }
     private fun upload_image_to_firebase(){
         val filename = UUID.randomUUID().toString()
-        val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
+        val ref = FirebaseStorage.getInstance().getReference("/images/profile_images/$filename")
         ref.putFile(global_uri)
             .addOnSuccessListener {
                 Log.d("console", "Success $global_uri")
