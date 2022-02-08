@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/rounded_button.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/rounder_btn.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_client.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_driver.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_registration.xml" value="0.259375" />

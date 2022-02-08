@@ -54,7 +54,7 @@ class RegistrationActivity : AppCompatActivity() {
                     return@addOnSuccessListener
                 }
             }
-            val check_username_client = FirebaseDatabase.getInstance().getReference("users/user/${username_txt.text.toString()}")
+            val check_username_client = FirebaseDatabase.getInstance().getReference("users/client")
             check_username_client.child(username_txt.text.toString()).get().addOnSuccessListener {
                 if(it.exists()){
                     Toast.makeText(this, "Username already exist", Toast.LENGTH_SHORT).show()
@@ -71,6 +71,7 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             val intent = Intent(this@RegistrationActivity, LoginActivity :: class.java );
             intent.putExtra("email",email_txt.text.toString())
+            intent.putExtra("username", username_txt.text.toString())
             intent.putExtra("password",password_txt.text.toString())
             intent.putExtra("check", true);
             startActivity(intent);

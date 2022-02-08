@@ -8,10 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
         var check = intent.getBooleanExtra("check", false);
         val email = intent.getStringExtra("email");
         val password = intent.getStringExtra("password")
+        val username = intent.getStringArrayExtra("username")
         //local
         val email_login_txt = findViewById<TextView>(R.id.email_login_txt);
         val password_login_txt = findViewById<TextView>(R.id.password_login_txt);
@@ -39,45 +37,89 @@ class LoginActivity : AppCompatActivity() {
         login_btn.setOnClickListener {
             if(email_login_txt.text.toString() == "" || password_login_txt.text.toString() == ""){
                 Toast.makeText(this, "Invalid login", Toast.LENGTH_SHORT).show()
+                Log.d("console", "Login failed email = ${email_login_txt.text.toString()}\nPassword = ${password_login_txt.text.toString()}")
                 return@setOnClickListener
             }
-            FirebaseAuth.getInstance().signInWithEmailAndPassword(
-                email_login_txt.text.toString(),
-                password_login_txt.text.toString()
+            val check_acc = FirebaseDatabase.getInstance().getReference("users/client/")
+            check_acc.child(email_login_txt.text.toString()).get().addOnSuccessListener {
+                if(it.exists()){
+                    val email_key = it.child("email").value
+                    Log.d("console", email_key.toString())
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                        email_key.toString(),
+                        password_login_txt.text.toString()
 
-            )
-                .addOnCompleteListener(this) { task ->
+                    )
+                        .addOnCompleteListener(this) { task ->
 
-                    if (task.isSuccessful) {
-                        val intent = Intent(this, HomeActivity::class.java)
-
-                        val ref = FirebaseDatabase.getInstance().getReference()
-                        val query = ref.child("users/client/").orderByChild("email").equalTo(email_login_txt.text.toString())
-                            .addValueEventListener(object : ValueEventListener{
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    Log.d("console", snapshot.key.toString())
+                            if (task.isSuccessful) {
+                                Log.d("console", email_key.toString())
+                                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+                                var ref = FirebaseDatabase.getInstance().getReference("users/client/${email_login_txt.text.toString()}")
+                                ref.get().addOnSuccessListener {
+                                    if(it.exists()){
+                                        user_data.username = email_login_txt.text.toString()
+                                        user_data.status = "client"
+                                    }
+                                    else{
+                                        user_data.username = email_login_txt.text.toString()
+                                        user_data.status = "driver"
+                                    }
                                 }
-
-                                override fun onCancelled(error: DatabaseError) {
-                                    TODO("Not yet implemented")
+                                if(user_data.status == "client"){
+                                    Log.d("console", "Logged in as client")
+                                    val intent = Intent(this, ClientActivity::class.java)
+                                    startActivity(intent)
                                 }
+                                else{
+                                    Log.d("console", "Logged in as driver")
+                                    val intent = Intent(this, DriverActivity::class.java)
+                                    startActivity(intent)
+                                }
+                                return@addOnCompleteListener
+                            } else {
+                                Toast.makeText(this, "Invalid Login 2", Toast.LENGTH_SHORT).show()
+                                return@addOnCompleteListener
+                            }
 
-                            })
-                        //val value = query.get().result
-                        //val result = value.toString()
-                        //Log.d("console", "$result")
-                        //Log.d("console", "hello")
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(this, "Invalid Login", Toast.LENGTH_SHORT).show()
-                        return@addOnCompleteListener
-                    }
-
+                        }
                 }
-            dont_have_account_txt.setOnClickListener {
-                val intent = Intent(this, RegistrationActivity::class.java)
-                startActivity(intent)
+                else{
+                    val check_acc = FirebaseDatabase.getInstance().getReference("users/driver/")
+                    check_acc.child(email_login_txt.text.toString()).get().addOnSuccessListener {
+                        if(it.exists()){
+                            val email_key = it.child("email").value
+                            Log.d("console", email_key.toString())
+                            FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                                email_key.toString(),
+                                password_login_txt.text.toString()
+
+                            )
+                                .addOnCompleteListener(this) { task ->
+                                    if(task.isSuccessful){
+                                        Log.d("console", email_key.toString())
+                                        user_data.username = email_login_txt.text.toString()
+                                        user_data.status = "driver"
+                                        Log.d("console", "Logged in as driver")
+                                        val intent = Intent(this, DriverActivity::class.java)
+                                        startActivity(intent)
+
+                                    }
+                                }
+                        }
+                        else{
+                            Toast.makeText(this, "Invalid Login", Toast.LENGTH_SHORT).show()
+                            return@addOnSuccessListener
+                        }
+                    }
+                }
             }
+        }
+
+        dont_have_account_txt.setOnClickListener {
+            Log.d("console", "go to register")
+            val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
         }
     }
 }
