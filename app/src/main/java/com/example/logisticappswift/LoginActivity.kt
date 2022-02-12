@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         var check = intent.getBooleanExtra("check", false);
         val email = intent.getStringExtra("email");
         val password = intent.getStringExtra("password")
-        val username = intent.getStringArrayExtra("username")
+        val username = intent.getStringExtra("username")
         //local
         val email_login_txt = findViewById<TextView>(R.id.email_login_txt);
         val password_login_txt = findViewById<TextView>(R.id.password_login_txt);
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         //
         //init
         if (check == true) {
-            email_login_txt.text = email.toString();
+            email_login_txt.text = username.toString();
             password_login_txt.text = password.toString();
         }
         //
