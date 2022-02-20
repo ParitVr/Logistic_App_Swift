@@ -72,7 +72,8 @@ class LoginActivity : AppCompatActivity() {
                                     startActivity(intent)
                                 }
                                 else{
-                                    Log.d("console", "Logged in as driver")
+                                    return@addOnCompleteListener
+                                    Log.d("console", "Logged in as driver1")
                                     val intent = Intent(this, DriverActivity::class.java)
                                     startActivity(intent)
                                 }
@@ -100,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
                                         Log.d("console", email_key.toString())
                                         user_data.username = email_login_txt.text.toString()
                                         user_data.status = "driver"
-                                        Log.d("console", "Logged in as driver")
+                                        Log.d("console", "Logged in as driver2")
                                         val intent = Intent(this, DriverActivity::class.java)
                                         startActivity(intent)
 

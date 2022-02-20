@@ -3,13 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/rounded_button.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/rounder_btn.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_client.xml" value="0.264" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_driver.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_driver.xml" value="0.2" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/activity_registration.xml" value="0.259375" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_create__job.xml" value="0.2608695652173913" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_home.xml" value="0.2608695652173913" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_setting.xml" value="0.1453125" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/job_row.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/recycler_view_item.xml" value="0.2586050724637681" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/recycler_view_item_1.xml" value="0.2586050724637681" />
       </map>
     </option>
   </component>

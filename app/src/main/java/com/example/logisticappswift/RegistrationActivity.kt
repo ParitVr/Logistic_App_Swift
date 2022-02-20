@@ -139,4 +139,6 @@ class RegistrationActivity : AppCompatActivity() {
             }
     }
 }
-class User(val uid:String, val username:String, val profile_img_url:String, val status:String, val email:String)
+class User(val uid:String, val username:String, val profile_img_url:String, val status:String, val email:String){
+    constructor():this("","","","","")
+}
