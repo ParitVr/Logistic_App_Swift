@@ -24,11 +24,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/create_job_view"
-                android:layout_width="390dp"
-                android:layout_height="613dp"
+                android:layout_width="403dp"
+                android:layout_height="681dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.238"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
@@ -36,32 +36,35 @@
 
             <Button
                 android:id="@+id/confirm_create_job_btn"
-                android:layout_width="0dp"
+                android:layout_width="361dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginBottom="72dp"
+                android:layout_marginBottom="88dp"
                 android:backgroundTint="#0EA7EC"
                 android:text="Confirm"
                 android:textColorHighlight="#0EA7EC"
                 android:textColorLink="#0EA7EC"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/create_job_view"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.48"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/select_image_btn"
+                app:layout_constraintVertical_bias="0.625" />
 
             <Button
-                android:id="@+id/cancel_create_job_btn"
+                android:id="@+id/select_image_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="#0EA7EC"
-                android:text="Cancel"
+                android:layout_marginBottom="160dp"
+                android:backgroundTint="#1666ED"
+                android:text="Select Image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price_offer_txt"
+                app:layout_constraintVertical_bias="1.0" />
 
             <EditText
                 android:id="@+id/job_detail_multi_txt"
@@ -69,14 +72,17 @@
                 android:layout_height="147dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="244dp"
+                android:layout_marginBottom="452dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Give a discription of the job"
                 android:inputType="textMultiLine"
-                app:layout_constraintBottom_toTopOf="@+id/confirm_create_job_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/create_job_view"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/textView7"

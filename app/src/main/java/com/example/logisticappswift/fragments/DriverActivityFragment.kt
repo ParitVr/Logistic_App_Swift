@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_driver_activity.view.*
 
@@ -62,7 +64,7 @@ class DriverActivityFragment : Fragment(), JobListClickListener {
 
     override fun onPostClick(post: CreatedPost) {
         super.onPostClick(post)
-        Toast.makeText(context, "post clicked", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "post by ${post.posted_by}", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPause() {
