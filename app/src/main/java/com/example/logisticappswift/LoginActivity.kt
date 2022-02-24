@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,8 +59,18 @@ class LoginActivity : AppCompatActivity() {
                                 var ref = FirebaseDatabase.getInstance().getReference("users/client/${email_login_txt.text.toString()}")
                                 ref.get().addOnSuccessListener {
                                     if(it.exists()){
+                                         ref.child("profile_img_url").get().addOnSuccessListener {
+                                             user_data.profile_img_url = it.value.toString()
+                                         }
+                                         ref.child("uid").get().addOnSuccessListener {
+                                             user_data.uid = it.value.toString()
+                                        }
+                                        ref.child("email").get().addOnSuccessListener{
+                                            user_data.email = it.value.toString()
+                                        }
                                         user_data.username = email_login_txt.text.toString()
                                         user_data.status = "client"
+                                        Log.d("console", "${user_data.uid}\n${user_data.profile_img_url}" )
                                     }
                                     else{
                                         user_data.username = email_login_txt.text.toString()
@@ -98,7 +109,18 @@ class LoginActivity : AppCompatActivity() {
                             )
                                 .addOnCompleteListener(this) { task ->
                                     if(task.isSuccessful){
-                                        Log.d("console", email_key.toString())
+                                        var ref = FirebaseDatabase.getInstance().getReference("users/driver/${email_login_txt.text.toString()}")
+                                        //Log.d("console", email_key.toString())
+                                        Log.d("console", "${user_data.uid}\n${user_data.profile_img_url}" )
+                                        ref.child("profile_img_url").get().addOnSuccessListener {
+                                            user_data.profile_img_url = it.value.toString()
+                                        }
+                                        ref.child("uid").get().addOnSuccessListener {
+                                            user_data.uid = it.value.toString()
+                                        }
+                                        ref.child("email").get().addOnSuccessListener{
+                                            user_data.email = it.value.toString()
+                                        }
                                         user_data.username = email_login_txt.text.toString()
                                         user_data.status = "driver"
                                         Log.d("console", "Logged in as driver2")
@@ -116,7 +138,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-
         dont_have_account_txt.setOnClickListener {
             Log.d("console", "go to register")
             val intent = Intent(this, RegistrationActivity::class.java)

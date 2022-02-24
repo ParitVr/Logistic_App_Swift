@@ -3,46 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".DriverActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_new_job"
-        android:layout_width="411dp"
-        android:layout_height="131dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/driver_tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck"
-        tools:itemCount="0" />
+        tools:ignore="SpeakableTextPresentCheck">
 
-    <ImageView
-        android:id="@+id/profile_img"
-        android:layout_width="69dp"
-        android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/recycler_view_new_job"
-        app:layout_constraintHorizontal_bias="0.073"
-        app:layout_constraintStart_toStartOf="@+id/recycler_view_new_job"
-        app:layout_constraintTop_toTopOf="@+id/recycler_view_new_job"
-        app:layout_constraintVertical_bias="0.262"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@tools:sample/avatars" />
+    </com.google.android.material.tabs.TabLayout>
 
-    <TextView
-        android:id="@+id/job_name_txt"
-        android:layout_width="199dp"
-        android:layout_height="30dp"
-        android:text="TextView"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_img"
-        app:layout_constraintEnd_toEndOf="@+id/recycler_view_new_job"
-        app:layout_constraintHorizontal_bias="0.355"
-        app:layout_constraintStart_toEndOf="@+id/profile_img"
-        app:layout_constraintTop_toTopOf="@+id/profile_img"
-        app:layout_constraintVertical_bias="0.45" />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/driverViewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/driver_tabLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
