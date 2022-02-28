@@ -1,5 +1,6 @@
 package com.example.logisticappswift.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.logisticappswift.JobDetailActivity
 import com.example.logisticappswift.R
 import com.example.logisticappswift.adapters.DriverJobListCardAdapter
 import com.example.logisticappswift.databinding.DriverJobListBinding
@@ -65,6 +67,8 @@ class DriverActivityFragment : Fragment(), JobListClickListener {
     override fun onPostClick(post: CreatedPost) {
         super.onPostClick(post)
         Toast.makeText(context, "post by ${post.posted_by}", Toast.LENGTH_SHORT).show()
+        var intent = Intent(context, JobDetailActivity :: class.java)
+        startActivity(intent)
     }
 
     override fun onPause() {
@@ -97,21 +101,26 @@ class DriverActivityFragment : Fragment(), JobListClickListener {
         ref.addListenerForSingleValueEvent(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.children.forEach {
-                    Log.d("console", it.toString())
-                    //Toast.makeText(context, "${it.toString()}", Toast.LENGTH_SHORT).show()
-                    post = CreatedPost("","","","","","",
-                    "","","","")
-                    post.posted_by = it.child("posted_by").value.toString()
-                    //post.deliver_from = it.child("deliver_from").value.toString()
-                    //post.deliver_to = it.child("deliver_to").value.toString()
-                    post.title = it.child("title").value.toString()
-                    //post.description = it.child("description").value.toString()
-                    post.load = it.child("load").value.toString()
-                    //post.price_offer = it.child("price_offer").value.toString()
-                    //post.post_id = it.child("post_id").value.toString()
-                    post.profile_img = it.child("profile_img").value.toString()
+                    if(it.child("status").value.toString() == "open"){
+                        Log.d("console", it.toString())
+                        //Toast.makeText(context, "${it.toString()}", Toast.LENGTH_SHORT).show()
 
-                    post_list.add(post)
+                        post = CreatedPost("","","","","","",
+                            "","","","")
+
+                        post.posted_by = it.child("posted_by").value.toString()
+                        post.deliver_from = it.child("deliver_from").value.toString()
+                        post.deliver_to = it.child("deliver_to").value.toString()
+                        post.title = it.child("title").value.toString()
+                        post.description = it.child("description").value.toString()
+                        post.load = it.child("load").value.toString()
+                        post.price_offer = it.child("price_offer").value.toString()
+                        post.post_id = it.child("post_id").value.toString()
+                        post.profile_img = it.child("profile_img").value.toString()
+                        post.status = it.child("status").value.toString()
+
+                        post_list.add(post)
+                    }
                 }
             }
 

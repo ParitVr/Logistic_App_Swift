@@ -1,16 +1,23 @@
 package com.example.logisticappswift.fragments
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.contentValuesOf
 import com.example.logisticappswift.R
 import com.example.logisticappswift.objects.CreatedPost
 import com.example.logisticappswift.user_data
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_create_job.*
 import kotlinx.android.synthetic.main.fragment_create_job.view.*
 import java.util.*
@@ -24,7 +31,16 @@ class CreateJobFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private var imageUri:Uri? = null
+    private var getImageResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == Activity.RESULT_OK){
+            if(it.data?.data != null){
+                imageUri = it.data?.data!!
+                Toast.makeText(context, "Image Selected $imageUri", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -40,11 +56,23 @@ class CreateJobFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater!!.inflate(R.layout.fragment_create_job, container, false)
+
+        view.select_image_btn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            intent.type = "image/*"
+            getImageResult.launch(intent)
+        }
+
         view.confirm_create_job_btn.setOnClickListener {
             if(title_txt.text.toString() == "" || deliver_from_txt.text.toString() == ""||
                     deliver_to_txt.text.toString() == "" || price_offer_txt.text.toString() == "" ||
                     load_txt.text.toString() == ""){
                 return@setOnClickListener
+            }
+
+            if(imageUri == null){
+                return@setOnClickListener
+                Toast.makeText(context, "Please select an image!", Toast.LENGTH_SHORT).show()
             }
             val post_id = UUID.randomUUID().toString()
             var create_post = CreatedPost(title = title_txt.text.toString(), deliver_from = deliver_from_txt.text.toString(),
@@ -53,7 +81,12 @@ class CreateJobFragment : Fragment() {
             val ref = FirebaseDatabase.getInstance().getReference("posts/$post_id").setValue(create_post).addOnSuccessListener {
                 Log.d("console", "Post created successfully")
             }
+            val ref_storage = imageUri?.let { img ->
+                FirebaseStorage.getInstance().getReference("/images/post_images/$post_id/$post_id.jpg").putFile(img)
+            }
         }
+
+
         return view
     }
 
