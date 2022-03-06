@@ -64,6 +64,7 @@ class CreateJobFragment : Fragment() {
         }
 
         view.confirm_create_job_btn.setOnClickListener {
+            //Log.d("console", "Post btn pressed")
             if(title_txt.text.toString() == "" || deliver_from_txt.text.toString() == ""||
                     deliver_to_txt.text.toString() == "" || price_offer_txt.text.toString() == "" ||
                     load_txt.text.toString() == ""){
@@ -74,10 +75,12 @@ class CreateJobFragment : Fragment() {
                 return@setOnClickListener
                 Toast.makeText(context, "Please select an image!", Toast.LENGTH_SHORT).show()
             }
+            Log.d("console", "Post is valid")
             val post_id = UUID.randomUUID().toString()
             var create_post = CreatedPost(title = title_txt.text.toString(), deliver_from = deliver_from_txt.text.toString(),
             deliver_to = deliver_to_txt.text.toString(), profile_img = user_data.profile_img_url, price_offer = price_offer_txt.text.toString(),
-            posted_by = user_data.username, post_id = post_id, description = job_detail_multi_txt.text.toString(), load = load_txt.text.toString())
+            posted_by = user_data.username, post_id = post_id, description = job_detail_multi_txt.text.toString(), load = load_txt.text.toString(),
+            status = "open")
             val ref = FirebaseDatabase.getInstance().getReference("posts/$post_id").setValue(create_post).addOnSuccessListener {
                 Log.d("console", "Post created successfully")
             }

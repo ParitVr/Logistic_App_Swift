@@ -8,7 +8,7 @@ import com.example.logisticappswift.fragments.CreateJobFragment
 import com.example.logisticappswift.fragments.HomeFragment
 import com.example.logisticappswift.fragments.SettingFragment
 
-class PageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager,lifecycle) {
+class ClientPageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager,lifecycle) {
     override fun getItemCount(): Int {
         return 3
     }

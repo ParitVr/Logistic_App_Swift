@@ -2,34 +2,44 @@ package com.example.logisticappswift
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.logisticappswift.adapters.PageAdapter
-import com.google.android.material.tabs.TabLayoutMediator
+import android.util.Log
+import androidx.fragment.app.Fragment
+import com.example.logisticappswift.fragments.ClientChatFragment
+import com.example.logisticappswift.fragments.CreateJobFragment
+import com.example.logisticappswift.fragments.HomeFragment
+import com.example.logisticappswift.fragments.SettingFragment
 import kotlinx.android.synthetic.main.activity_client.*
 
 class ClientActivity : AppCompatActivity() {
 
-    var tab_title = arrayOf("Home", "Create Job", "Setting")
-    var home_icon = R.drawable.ic_baseline_home_24
-    var add_icon = R.drawable.ic_baseline_add_circle_24
-    var setting_icon = R.drawable.ic_baseline_settings_24
-    var icon_tab = arrayOf(home_icon, add_icon, setting_icon)
+    private val homeFragment = HomeFragment()
+    private val createPostFragment = CreateJobFragment()
+    private val settingFragment = SettingFragment()
+    private val chatFragment = ClientChatFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client)
 
+        replace_fragment(homeFragment)
 
-        //init
-        view_pager.adapter = PageAdapter(supportFragmentManager, lifecycle)
-        TabLayoutMediator(tab_layout, view_pager){
-                tab, position ->
-            tab.setIcon(icon_tab[position])
-        }.attach()
-        //
-
+        client_bottom_nav.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.client_home_nav -> replace_fragment(homeFragment)
+                R.id.client_post_nav -> replace_fragment(createPostFragment)
+                R.id.client_chat_nav -> replace_fragment(chatFragment)
+                R.id.client_setting_nav -> replace_fragment(settingFragment)
+            }
+            true
+        }
     }
 
-    private fun someFunction(){
-
+    private fun replace_fragment(fragment:Fragment){
+        if(fragment != null){
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container_client, fragment)
+            transaction.commit()
+            Log.d("console", "${fragment.toString()}")
+        }
     }
 }

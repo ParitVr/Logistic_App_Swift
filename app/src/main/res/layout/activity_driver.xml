@@ -4,30 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DriverActivity">
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/driver_tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck">
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/driverViewPager"
+    tools:context=".DriverActivity"
+    >
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/driver_bottom_nav"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:itemIconTint="@drawable/nav_select_color"
+    app:itemTextColor="@drawable/nav_select_color"
+    app:menu="@menu/menu_driver"
+    />
+    <FrameLayout
+        android:id="@+id/fragment_container_driver"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/driver_tabLayout"
+        app:layout_constraintBottom_toTopOf="@id/driver_bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent">
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

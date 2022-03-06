@@ -7,6 +7,7 @@ import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.*
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 class RegistrationActivity : AppCompatActivity() {
@@ -139,6 +141,8 @@ class RegistrationActivity : AppCompatActivity() {
             }
     }
 }
-class User(val uid:String, val username:String, val profile_img_url:String, val status:String, val email:String){
+
+@Parcelize
+class User(val uid:String, val username:String, val profile_img_url:String, val status:String, val email:String):Parcelable{
     constructor():this("","","","","")
 }

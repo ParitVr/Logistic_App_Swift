@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.logisticappswift.R
+import com.example.logisticappswift.user_data
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_driver_home.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,8 +37,10 @@ class DriverHomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_driver_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_driver_home, container, false)
+        Picasso.get().load(user_data.profile_img_url).into(view.driver_home_profile_img)
+        view.driver_home_username.text = user_data.username
+        return view
     }
 
     companion object {

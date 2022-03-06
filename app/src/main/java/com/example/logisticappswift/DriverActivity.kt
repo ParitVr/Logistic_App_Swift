@@ -2,82 +2,48 @@ package com.example.logisticappswift
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.recyclerview.widget.RecyclerView
-import com.example.logisticappswift.adapters.DriverPageAdapter
-import com.example.logisticappswift.adapters.PageAdapter
-import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.squareup.picasso.Picasso
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.Item
-import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_client.*
+import androidx.fragment.app.Fragment
+import com.example.logisticappswift.fragments.DriverActivityFragment
+import com.example.logisticappswift.fragments.DriverChatFragment
+import com.example.logisticappswift.fragments.DriverHomeFragment
+import com.example.logisticappswift.fragments.SettingFragment
+//import com.example.logisticappswift.objects.post_list
 import kotlinx.android.synthetic.main.activity_driver.*
-import kotlinx.android.synthetic.main.activity_driver.view.*
-
 
 
 class DriverActivity : AppCompatActivity() {
+
+    private val homeFragment = DriverHomeFragment()
+    private val jobListFragment = DriverActivityFragment()
+    private val chatFragment = DriverChatFragment()
+    private val settingFragment = SettingFragment()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_driver)
-        var home_icon = R.drawable.ic_baseline_home_24
-        var activity_icon = R.drawable.ic_baseline_dehaze_24
-        var setting_icon = R.drawable.ic_baseline_settings_24
-        var icon_tab = arrayOf(home_icon, activity_icon, setting_icon)
 
-        driverViewPager.adapter = DriverPageAdapter(supportFragmentManager, lifecycle)
-        TabLayoutMediator(driver_tabLayout, driverViewPager){
-                tab, position ->
-            tab.setIcon(icon_tab[position])
-        }.attach()
-//        val recycler_view = findViewById<RecyclerView>(R.id.recycler_view_new_job)
-//        val job_list = findViewById<TextView>(R.id.job_name_txt)
-//        val adapter = GroupAdapter<ViewHolder>()
-//        profile_img.visibility = View.GONE
-//        job_list.visibility = View.GONE
-//        val ref = FirebaseDatabase.getInstance().getReference("users/client")
-//        ref.addListenerForSingleValueEvent(object: ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                snapshot.children.forEach{
-//                    Log.d("console", it.toString())
-//                    val user = it.getValue(User::class.java)
-//                    if(user != null){
-//                        adapter.add(JobList(user))
-//                        Log.d("console", "User not null ${user.username}")
-//                    }
-//                }
-//                recycler_view_new_job.adapter = adapter
-//                Log.d("console", adapter.toString() + " " + R.layout.activity_driver)
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//            }
-//        })
-//        val i: Int = recycler_view_new_job.childCount
-//        Log.d("console", i.toString())
-    }
+        replace_fragment(homeFragment)
+
+        driver_bottom_nav.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.driver_home_nav -> replace_fragment(homeFragment)
+                R.id.driver_post_nav -> replace_fragment(jobListFragment)
+                R.id.driver_chat_nav -> replace_fragment(chatFragment)
+                R.id.driver_setting_nav -> replace_fragment(settingFragment)
+            }
+            true
+        }
+
     }
 
-//class JobList(val user:User): Item<ViewHolder>(){
-//    override fun bind(viewHolder: ViewHolder, position: Int) {
-//        viewHolder.itemView.job_name_txt.text = user.username
-//        Picasso.get().load(user.profile_img_url).into(viewHolder.itemView.profile_img)
-//    }
-//
-//    override fun getLayout(): Int {
-//        return R.layout.activity_driver
-//    }
-//}
+    private fun replace_fragment(fragment: Fragment){
+        if(fragment != null){
+            //post_list.clear()
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container_driver, fragment)
+            transaction.commit()
+        }
+    }
+}
 
 

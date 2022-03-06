@@ -7,31 +7,26 @@
     android:layout_height="match_parent"
     tools:context=".ClientActivity">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="0dp"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/client_bottom_nav"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:tabIconTint="#6A6A6A"
-        app:tabIndicatorColor="#6A6A6A"
-        app:tabRippleColor="#0EA7EC"
-        app:tabTextColor="#0EA7EC"
-        tools:ignore="SpeakableTextPresentCheck"></com.google.android.material.tabs.TabLayout>
+        app:itemIconTint="@drawable/nav_select_color"
+        app:itemTextColor="@drawable/nav_select_color"
+        app:menu="@menu/menu_client"
+         />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
+    <FrameLayout
+        android:id="@+id/fragment_container_client"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/tab_layout"
+        app:layout_constraintBottom_toTopOf="@id/client_bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent">
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
