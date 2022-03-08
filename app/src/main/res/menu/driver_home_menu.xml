@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/driver_job_accepted_nav"
+        android:title="My Job"/>
+    <item
+        android:id="@+id/driver_job_history_nav"
+        android:title="Job History"/>
+
+</menu>

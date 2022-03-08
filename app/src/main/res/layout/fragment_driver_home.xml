@@ -45,28 +45,29 @@
         app:layout_constraintStart_toEndOf="@+id/driver_home_profile_img"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <FrameLayout
+        android:id="@+id/driver_home_fragment_container"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
+        app:layout_constraintTop_toBottomOf="@+id/driver_homepage_nav">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Monday" />
+    </FrameLayout>
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tuesday" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wednesday" />
-    </com.google.android.material.tabs.TabLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/driver_homepage_nav"
+        android:layout_width="411dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:itemIconTint="@drawable/nav_select_color"
+        app:itemTextColor="@drawable/nav_select_color"
+        app:menu="@menu/driver_home_menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
