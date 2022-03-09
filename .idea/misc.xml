@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/activity_client.xml" value="0.36666666666666664" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/activity_driver.xml" value="0.36666666666666664" />
         <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/activity_job_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/chat_to_row.xml" value="0.2984375" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/client_home_post.xml" value="0.36666666666666664" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/driver_home_job.xml" value="0.36666666666666664" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/fragment_driver_activity.xml" value="0.2984375" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/fragment_driver_home.xml" value="0.2984375" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/fragment_driver_home_accepted_job.xml" value="0.36666666666666664" />
         <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/fragment_setting.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/border.xml" value="0.2796296296296296" />
