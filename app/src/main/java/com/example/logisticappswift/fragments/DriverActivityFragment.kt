@@ -109,6 +109,7 @@ class DriverActivityFragment : Fragment(), JobListClickListener {
                             intent.putExtra("price_offer",postItem.post.price_offer)
                             intent.putExtra("id", postItem.post.post_id)
                             intent.putExtra("posted_by", postItem.post.posted_by)
+                            intent.putExtra("profile_img", postItem.post.profile_img)
                             intent.putExtra("config", true)
                             startActivity(intent)
                         }

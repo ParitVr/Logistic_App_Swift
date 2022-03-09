@@ -82,7 +82,9 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/create_job_view"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="1.0"
+                android:background="@drawable/border"
+                android:padding="10dp"/>
 
             <TextView
                 android:id="@+id/textView7"
@@ -133,23 +135,29 @@
 
             <EditText
                 android:id="@+id/deliver_from_txt"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.441"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toEndOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/job_detail_multi_txt" />
 
             <EditText
                 android:id="@+id/deliver_to_txt"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="@+id/deliver_from_txt"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/deliver_from_txt"
@@ -157,11 +165,14 @@
 
             <EditText
                 android:id="@+id/load_txt"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="@+id/deliver_to_txt"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/deliver_to_txt"
@@ -169,13 +180,16 @@
 
             <EditText
                 android:id="@+id/price_offer_txt"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="@+id/load_txt"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/load_txt"
                 app:layout_constraintTop_toBottomOf="@+id/load_txt" />
 
@@ -193,13 +207,16 @@
 
             <EditText
                 android:id="@+id/title_txt"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.807"
+                app:layout_constraintHorizontal_bias="0.828"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

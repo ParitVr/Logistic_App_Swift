@@ -8,17 +8,16 @@ import com.example.logisticappswift.fragments.*
 
 class DriverPageAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager,lifecycle){
     override fun getItemCount(): Int {
-        return 3
+        return 2
     }
 
     override fun createFragment(position: Int): Fragment {
         when(position){
-            0 -> return DriverHomeFragment()
-            1 -> return DriverActivityFragment()
-            2 -> return SettingFragment()
-            else  -> DriverHomeFragment()
+            0 -> return DriverHomeAcceptedJobFragment()
+            1 -> return DriverHomeAcceptedJobFragment()
+            else  -> DriverHomeAcceptedJobFragment()
         }
 
-        return DriverHomeFragment()
+        return DriverHomeAcceptedJobFragment()
     }
 }

@@ -64,10 +64,11 @@ class CreateJobFragment : Fragment() {
         }
 
         view.confirm_create_job_btn.setOnClickListener {
-            //Log.d("console", "Post btn pressed")
+            Log.d("console", "Post btn pressed")
             if(title_txt.text.toString() == "" || deliver_from_txt.text.toString() == ""||
                     deliver_to_txt.text.toString() == "" || price_offer_txt.text.toString() == "" ||
                     load_txt.text.toString() == ""){
+                Toast.makeText(context, "Please select fill out everything", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -84,23 +85,21 @@ class CreateJobFragment : Fragment() {
             val ref = FirebaseDatabase.getInstance().getReference("posts/$post_id").setValue(create_post).addOnSuccessListener {
                 Log.d("console", "Post created successfully")
             }
+            val ref2 = FirebaseDatabase.getInstance().getReference("/user-posts/${user_data.username}/$post_id").setValue(create_post)
             val ref_storage = imageUri?.let { img ->
                 FirebaseStorage.getInstance().getReference("/images/post_images/$post_id/$post_id.jpg").putFile(img)
             }
+            Toast.makeText(context, "Post Created", Toast.LENGTH_SHORT).show()
+            title_txt.setText("")
+            job_detail_multi_txt.setText("")
+            deliver_from_txt.setText("")
+            deliver_to_txt.setText("")
+            load_txt.setText("")
+            price_offer_txt.setText("")
+            imageUri = null
         }
 
 
         return view
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CreateJobFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }
