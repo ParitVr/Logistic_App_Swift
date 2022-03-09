@@ -2,6 +2,7 @@ package com.example.logisticappswift
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -109,6 +110,26 @@ class JobDetailActivity : AppCompatActivity() {
             ref.child("status").setValue("Complete")
             val ref2 = FirebaseDatabase.getInstance().getReference("user-posts/$posted_by/$id")
             ref2.child("status").setValue("Complete")
+        }
+
+        detail_deliver_from_txt.setOnClickListener {
+            var locationFrom = detail_deliver_from_txt.text.toString()
+            val gmmIntentUri =
+                Uri.parse("geo:0,0?q=$locationFrom")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
+
+        detail_deliver_to_txt.setOnClickListener {
+
+            var locationTo = detail_deliver_to_txt.text.toString()
+            val gmmIntentUri =
+                Uri.parse("geo:0,0?q=$locationTo")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+
         }
     }
 }

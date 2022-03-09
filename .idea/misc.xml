@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/activity_job_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/App/Logistic_App_Swift/app/src/main/res/layout/fragment_setting.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/border.xml" value="0.2796296296296296" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/drawable/gradient_background.xml" value="0.2911458333333333" />
@@ -30,16 +32,13 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/chat_from_row.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/chat_new_messages.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/chat_to_row.xml" value="0.24682971014492755" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/client_home_post.xml" value="0.24682971014492755" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/driver_home_job.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/driver_job_list.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_client_chat.xml" value="0.24682971014492755" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_create__job.xml" value="0.2608695652173913" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_create_job.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_driver_activity.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_driver_chat.xml" value="0.24682971014492755" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_driver_home.xml" value="0.2" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_driver_home_accepted_job.xml" value="0.24682971014492755" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_driver_home.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_home.xml" value="0.2608695652173913" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_setting.xml" value="0.1453125" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/LogisticAppSwift/app/src/main/res/layout/fragment_test.xml" value="0.264" />
