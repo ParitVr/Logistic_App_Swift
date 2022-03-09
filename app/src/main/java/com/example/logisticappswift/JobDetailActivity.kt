@@ -132,5 +132,8 @@ class JobDetailActivity : AppCompatActivity() {
             //Commit
 
         }
+//        detail_deliver_to_txt.setOnClickListener {
+//            detail_deliver_to_txt.text.toString()
+//        }
     }
 }
