@@ -3,10 +3,13 @@ package com.example.logisticappswift
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.logisticappswift.objects.LoadingDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
@@ -22,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         val email = intent.getStringExtra("email");
         val password = intent.getStringExtra("password")
         val username = intent.getStringExtra("username")
+        var loading = intent.getBooleanExtra("loading", false)
         //local
         val email_login_txt = findViewById<TextView>(R.id.email_login_txt);
         val password_login_txt = findViewById<TextView>(R.id.password_login_txt);
@@ -32,6 +36,19 @@ class LoginActivity : AppCompatActivity() {
         if (check == true) {
             email_login_txt.text = username.toString();
             password_login_txt.text = password.toString();
+        }
+        if(loading){
+            val loading = LoadingDialog(this)
+            loading.startLoading()
+//            val handler = Handler()
+//            handler.postDelayed(object:Runnable{
+//                override fun run() {
+//                    loading.isDismiss()
+//                }
+//            }, 1000)
+            Handler(Looper.getMainLooper()).postDelayed({
+                loading.isDismiss()
+            }, 3000)
         }
         //
         //on click functions

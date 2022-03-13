@@ -7,12 +7,15 @@ import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.Parcelable
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
+import com.example.logisticappswift.objects.LoadingDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -71,11 +74,13 @@ class RegistrationActivity : AppCompatActivity() {
                     Log.d("console", "Account successfully created with uid : ${it.result?.user?.uid}");
                     upload_image_to_firebase();
                 }
+
             val intent = Intent(this@RegistrationActivity, LoginActivity :: class.java );
             intent.putExtra("email",email_txt.text.toString())
             intent.putExtra("username", username_txt.text.toString())
             intent.putExtra("password",password_txt.text.toString())
             intent.putExtra("check", true);
+            intent.putExtra("loading", true)
             startActivity(intent);
         }
         photo_img.setOnClickListener {
